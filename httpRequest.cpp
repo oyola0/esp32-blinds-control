@@ -26,26 +26,26 @@ void doRequest(String uri) {
 }
 
 // Private
-void requestButton(String button, int channel) {
-  doRequest("button/" + button + "/channel/" + String(channel));
+void requestButton(String button) {
+  doRequest("button/" + button + "/channel/" + String(defaultChannel));
 }
 
-void requestMiddle(int channel) {  
-  doRequest("middle/channel/" + String(channel));
+void middleButtonPushed() {  
+  doRequest("middle/channel/" + String(defaultChannel));
 }
 
-void upButton(int channel) {
-  requestButton("up", channel);
+void upButtonPushed() {
+  requestButton("up");
 }
 
-void stopButton(int channel) {
-  requestButton("stop", channel);
+void stopButtonPushed() {
+  requestButton("stop");
 }
 
-void downButton(int channel) {
-  requestButton("down", channel);
+void downButtonPushed() {
+  requestButton("down");
 }
 
-void requestLowBattery() {
+void sendEmailLowBattery() {
   doRequest("esp32/low-battery");
 }
