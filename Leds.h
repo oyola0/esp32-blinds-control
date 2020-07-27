@@ -23,7 +23,7 @@ class Leds {
 
     void update() {
       if(millis() > timeToNextCheck) {
-        timeToNextCheck = millis() + 5;
+        timeToNextCheck = millis() + 1;
         
         for (int i=1; i<4; i++) {
           if(dutyCycles[i] < MAX && ledIsOnStatus[i] == false) {
@@ -39,11 +39,11 @@ class Leds {
             ledcWrite(i, dutyCycles[i]);
           }
         }
-      }  
+      }
     }
 
   private:
-    static int const MAX = 100;
+    static int const MAX = 250;
     long timeToNextCheck = 0;
     bool ledIsOnStatus[4] = {false, false, false, false};
     int directions[4] = {-1, -1, -1 ,-1};

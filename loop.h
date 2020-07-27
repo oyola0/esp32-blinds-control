@@ -4,8 +4,8 @@ class Loop {
   public:
     bool loop() {      
       buttons.updateAllLedStatus();
-      checkIfAnyButtonIsPushed();
-    
+      checkIfAnyButtonIsPushed();      
+
       if((millis() - timerToSleep) > 10000) {
         timerToSleep = millis();
         go_to_sleep();
@@ -27,7 +27,7 @@ class Loop {
           timerToSleep = millis();    
           upButtonPushed();
           nextExecution = millis() + executeDelay;
-        } else if (buttons.readStopButtonState() == true) {
+        } else if(buttons.readStopButtonState() == true) {
           timerToSleep = millis();
           stopCounterTime++;
           if (stopCounterTime > 20) {
@@ -35,7 +35,7 @@ class Loop {
             middleButtonPushed();      
             nextExecution = millis() + 4000;
           }
-        } else if (buttons.readDownButtonState() == true) {
+        } else if(buttons.readDownButtonState() == true) {
           timerToSleep = millis();
           downButtonPushed();
           nextExecution = millis() + executeDelay;
@@ -45,7 +45,7 @@ class Loop {
           stopButtonPushed();
           nextExecution = millis() + executeDelay;
         }
-      }  
+      }      
     }
 };
 
