@@ -25,6 +25,10 @@ class Buttons {
       }   
     }
 
+    bool fadeoutIsFinished() {
+      return leds.fadeout();
+    }    
+
   private:
     long nextExecution = 0;
     Leds leds;

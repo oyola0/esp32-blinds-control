@@ -6,9 +6,8 @@ class Loop {
       buttons.updateAllLedStatus();
       checkIfAnyButtonIsPushed();      
 
-      if((millis() - timerToSleep) > 10000) {
-        timerToSleep = millis();
-        go_to_sleep();
+      if((millis() - timerToSleep) > 10000 && buttons.fadeoutIsFinished()) {
+        go_to_sleep();     
       }
     }
 
@@ -24,7 +23,7 @@ class Loop {
         nextExecution = millis() + 100;
 
         if(buttons.readUpButtonState() == true) {
-          timerToSleep = millis();    
+          timerToSleep = millis();   
           upButtonPushed();
           nextExecution = millis() + executeDelay;
         } else if(buttons.readStopButtonState() == true) {
