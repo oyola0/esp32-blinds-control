@@ -7,7 +7,7 @@ class Loop {
       buttons.updateAllLedStatus();
       checkIfAnyButtonIsPushed();      
 
-      if((millis() - timerToSleep) > 10000 && buttons.fadeoutIsFinished()) {
+      if((millis() - timerToSleep) > 20000 && buttons.fadeoutIsFinished()) {
         checkVersion();
         go_to_sleep();
       }
