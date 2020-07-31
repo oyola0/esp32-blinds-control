@@ -2,15 +2,15 @@
 
 class Buttons {
   public:
-    bool readUpButtonState() {
+    bool upButtonIsPushed() {
       return genericReadButtonState(gpioUpButton, upChannel);
     }
 
-    bool readStopButtonState() {
+    bool stopButtonIsPushed() {
       return genericReadButtonState(gpioStopButton, stopChannel);  
     }
 
-    bool readDownButtonState() {
+    bool downButtonIsPushed() {
       return genericReadButtonState(gpioDownButton, downChannel);  
     }
 

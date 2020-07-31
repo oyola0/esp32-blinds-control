@@ -1,4 +1,5 @@
 #include "Buttons.h"
+#include "checkVersion.h"
 
 class Loop {
   public:
@@ -7,7 +8,8 @@ class Loop {
       checkIfAnyButtonIsPushed();      
 
       if((millis() - timerToSleep) > 10000 && buttons.fadeoutIsFinished()) {
-        go_to_sleep();     
+        checkVersion();
+        go_to_sleep();
       }
     }
 
@@ -22,11 +24,11 @@ class Loop {
       if(millis() > nextExecution) {
         nextExecution = millis() + 100;
 
-        if(buttons.readUpButtonState() == true) {
+        if(buttons.upButtonIsPushed()) {
           timerToSleep = millis();   
           upButtonPushed();
           nextExecution = millis() + executeDelay;
-        } else if(buttons.readStopButtonState() == true) {
+        } else if(buttons.stopButtonIsPushed()) {
           timerToSleep = millis();
           stopCounterTime++;
           if (stopCounterTime > 20) {
@@ -34,7 +36,7 @@ class Loop {
             middleButtonPushed();      
             nextExecution = millis() + 4000;
           }
-        } else if(buttons.readDownButtonState() == true) {
+        } else if(buttons.downButtonIsPushed()) {
           timerToSleep = millis();
           downButtonPushed();
           nextExecution = millis() + executeDelay;

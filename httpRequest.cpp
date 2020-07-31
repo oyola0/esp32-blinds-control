@@ -2,10 +2,11 @@
 #include "HTTPClient.h"
 
 // Private
-void doRequest(String uri) {
+String doRequest(String uri) {
   HTTPClient http;
   Serial.println("URI: " + uri);  
   String serverPath = serverName + uri;
+  String payload = "";
 
   http.begin(serverPath.c_str());
   http.setUserAgent(boardUserAgent);
@@ -15,7 +16,7 @@ void doRequest(String uri) {
   if (httpResponseCode < 400) {
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
-    String payload = http.getString();
+    payload = http.getString();
     Serial.println(payload);
   } else {
     Serial.print("Error code: ");
@@ -23,6 +24,7 @@ void doRequest(String uri) {
   }
 
   http.end();
+  return payload;
 }
 
 // Private
@@ -48,4 +50,8 @@ void downButtonPushed() {
 
 void sendEmailLowBattery() {
   doRequest("esp32/low-battery");
+}
+
+String getLastestVersion() {
+  return doRequest("esp32/version");  
 }
