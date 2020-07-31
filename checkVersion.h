@@ -9,6 +9,7 @@ void checkVersion() {
     String serverPath = serverName + String("esp32/update");
     Serial.println("URI: " + serverPath);  
     WiFiClient client;
+    ledcDetachPin(gpioStopLed);
     httpUpdate.setLedPin(gpioStopLed);
 
     t_httpUpdate_return ret = httpUpdate.update(client, serverPath);
