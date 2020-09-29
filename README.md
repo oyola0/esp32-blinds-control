@@ -17,7 +17,7 @@ This project is useful for controlling the blind. Related to another [jarolift d
 
 ## Variables defined in the config.h file
 | Variable      | Description   | Default |
-| ------------- |:------------- | -----: |
+| ------------- | ------------- | ----- |
 | WiFiSSID | Wifi SSID | |
 | WiFiPassword | Wifi password | |
 | serverName | Exposed API | http://SERVER_IP:8080/api/ |
